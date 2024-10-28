@@ -52,9 +52,9 @@ class Server:
 
         assert isinstance(index, int)
         assert index >= 0
-        assert index < 19418
-
         indexed_dataset = self.indexed_dataset()
+        assert index < len(indexed_dataset)
+
         next_index = index + page_size
         data = []
 

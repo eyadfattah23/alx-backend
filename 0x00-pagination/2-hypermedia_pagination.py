@@ -82,11 +82,23 @@ class Server:
 
         """
 
+        try:
+            next_page = self.get_page(page + 1, page_size)
+            next_page_idx = page + 1 if next_page != [] else None
+        except AssertionError:
+            next_page_idx = None
+
+        try:
+            prev_page = self.get_page(page - 1, page_size)
+            prev_page_idx = page - 1
+        except AssertionError:
+            prev_page_idx = None
+
         return {
             "page_size": page_size,
             "page": page,
             "data": self.get_page(page, page_size),
-            "next_page": page + 1,
-            "prev_page": page - 1,
+            "next_page": next_page_idx,
+            "prev_page": prev_page_idx,
             "total_pages": math.ceil(len(self.dataset()) / page_size),
         }

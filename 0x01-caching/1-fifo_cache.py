@@ -3,7 +3,6 @@
 
 
 from base_caching import BaseCaching
-from collections import OrderedDict
 
 
 class FIFOCache(BaseCaching):

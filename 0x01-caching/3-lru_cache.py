@@ -17,7 +17,7 @@ class LRUCache(BaseCaching):
     def put(self, key, item):
         """assign to the dictionary self.cache_data"""
         if key and item:
-            self.recencyDict[key] = 4
+            self.recencyDict[key] = BaseCaching.MAX_ITEMS
             keys = list(self.cache_data.keys())
             if len(keys) >= BaseCaching.MAX_ITEMS and key not in keys:
                 min_recency = float('inf')
@@ -41,5 +41,5 @@ class LRUCache(BaseCaching):
 
         if key:
             if key in self.recencyDict:
-                self.recencyDict[key] = 4
+                self.recencyDict[key] = BaseCaching.MAX_ITEMS
             return self.cache_data.get(key)

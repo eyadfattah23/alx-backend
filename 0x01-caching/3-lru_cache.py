@@ -42,4 +42,8 @@ class LRUCache(BaseCaching):
         if key:
             if key in self.recencyDict:
                 self.recencyDict[key] = BaseCaching.MAX_ITEMS
+                for recency_key in self.recencyDict.keys():
+                    if recency_key == key:
+                        continue
+                    self.recencyDict[recency_key] -= 1
             return self.cache_data.get(key)
